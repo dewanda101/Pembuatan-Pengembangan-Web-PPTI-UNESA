@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from mizzle.webestica.com/contact-v1.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 04 Sep 2024 02:52:39 GMT -->
+
+<head>
+
+    <title>PPTI | Pusat Pengembangan Teknologi Informasi</title>
+
+    <!-- Meta Tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Webestica.com">
+    <meta name="description" content="Technology and Corporate Bootstrap Theme">
+
+    <!-- Dark mode -->
+    <script>
+        const storedTheme = localStorage.getItem('theme')
+
+        const getPreferredTheme = () => {
+            if (storedTheme) {
+                return storedTheme
+            }
+            return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'light'
+        }
+
+        const setTheme = function(theme) {
+            if (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.documentElement.setAttribute('data-bs-theme', 'dark')
+            } else {
+                document.documentElement.setAttribute('data-bs-theme', theme)
+            }
+        }
+
+        setTheme(getPreferredTheme())
+
+        window.addEventListener('DOMContentLoaded', () => {
+            var el = document.querySelector('.theme-icon-active');
+            if (el != 'undefined' && el != null) {
+                const showActiveTheme = theme => {
+                    const activeThemeIcon = document.querySelector('.theme-icon-active use')
+                    const btnToActive = document.querySelector(`[data-bs-theme-value="${theme}"]`)
+                    const svgOfActiveBtn = btnToActive.querySelector('.mode-switch use').getAttribute('href')
+
+                    document.querySelectorAll('[data-bs-theme-value]').forEach(element => {
+                        element.classList.remove('active')
+                    })
+
+                    btnToActive.classList.add('active')
+                    activeThemeIcon.setAttribute('href', svgOfActiveBtn)
+                }
+
+                window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+                    if (storedTheme !== 'light' || storedTheme !== 'dark') {
+                        setTheme(getPreferredTheme())
+                    }
+                })
+
+                showActiveTheme(getPreferredTheme())
+
+                document.querySelectorAll('[data-bs-theme-value]')
+                    .forEach(toggle => {
+                        toggle.addEventListener('click', () => {
+                            const theme = toggle.getAttribute('data-bs-theme-value')
+                            localStorage.setItem('theme', theme)
+                            setTheme(theme)
+                            showActiveTheme(theme)
+                        })
+                    })
+
+            }
+        })
+    </script>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="images/logo/Logo-Unesa.png">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap"
+        rel="stylesheet">
+
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" type="text/css" href="assets/vendor/font-awesome/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/vendor/bootstrap-icons/bootstrap-icons.css">
+    <link rel="stylesheet" type="text/css" href="assets/vendor/glightbox/css/glightbox.css">
+    <link rel="stylesheet" type="text/css" href="assets/vendor/swiper/swiper-bundle.min.css">
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+
+</head>
+
+<body>
+
+    <!-- Header START -->
+    <header class="header-sticky header-absolute">
+        <!-- Logo Nav START -->
+        <nav class="navbar navbar-expand-xl">
+            <div class="container">
+                <!-- Logo START -->
+                <a class="navbar-brand me-0" href="index-2.html">
+                    <img class="navbar-brand-item" style="height: 85px;" src="{{ asset('images/logo/Logo-Unesa.png') }}"
+                        alt="logo">
+
+                </a>
+                <!-- Logo END -->
+
+                <!-- Main navbar START -->
+                <div class="navbar-collapse collapse" id="navbarCollapse">
+                    <ul class="navbar-nav navbar-nav-scroll dropdown-hover mx-auto">
+
+                        <!-- Nav item -->
+                        <li class="nav-item dropdown">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('home') }}" data-bs-auto-close="outside"
+                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Beranda</a>
+                            <div class="dropdown-menu dropdown-menu-size-lg p-3">
+                                <div class="row pt-2">
+                                    <!-- Image and button -->
+                                    <div class="col-sm-6">
+                                        <ul class="list-unstyled"></ul>
+                                    </div>
+                                    <!-- Index nav links -->
+                                    <div class="col-sm-6">
+                                        <ul class="list-unstyled"></ul>
+                                    </div>
+                                    <!-- CTA -->
+                                    <div class="col-12">
+                                        <hr class="mt-2"> <!-- Divider -->
+                                        <div class="d-sm-flex justify-content-between align-items-center px-2">
+                                            <div class="me-3 mb-2 mb-sm-0">
+                                                <h6 class="mb-2 mb-sm-0"></h6>
+                                                <small class="mb-0"></small>
+                                            </div>
+                                            <a href="#" class="btn btn-sm btn-primary"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        </li>
+
+                        <!-- Nav item -->
+                        <li class="nav-item dropdown" id="aboutDropdown">
+                            <a class="nav-link">Tentang Kami</a>
+                            <ul class="dropdown-menu custom-dropdown-menu">
+                                <li><a class="dropdown-item" href="{{ route('about') }}">Visi & Misi</a></li>
+                                <li><a class="dropdown-item" href="{{ route('document.index') }}">Struktur Organisasi</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- JavaScript -->
+                        <script>
+                            document.addEventListener('DOMContentLoaded', function() {
+                                const dropdown = document.getElementById('aboutDropdown');
+                                const menu = dropdown.querySelector('.dropdown-menu');
+
+                                dropdown.addEventListener('mouseenter', function() {
+                                    menu.classList.add('show');
+                                });
+
+                                dropdown.addEventListener('mouseleave', function() {
+                                    menu.classList.remove('show');
+                                });
+                            });
+                        </script>
+
+                        <!-- CSS -->
+                        <style>
+                            .custom-dropdown-menu {
+                                background-color: #f9f9f9;
+                                /* Warna latar belakang */
+                                border: 1px solid #ddd;
+                                /* Border dropdown */
+                                max-height: 200px;
+                                /* Maksimal tinggi dropdown */
+                                overflow-y: auto;
+                                /* Scrollbar jika konten terlalu panjang */
+                                padding: 10px;
+                                /* Spasi dalam dropdown */
+                                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                                /* Bayangan */
+                            }
+
+                            .custom-dropdown-menu .dropdown-item {
+                                font-family: Arial, sans-serif;
+                                /* Font dropdown */
+                                font-size: 14px;
+                                /* Ukuran font */
+                                color: #333;
+                                /* Warna teks */
+                                padding: 8px 12px;
+                                /* Spasi tiap item */
+                                border-bottom: 1px solid #eee;
+                                /* Garis bawah antar item */
+                            }
+
+                            .custom-dropdown-menu .dropdown-item:hover {
+                                background-color: #e9ecef;
+                                /* Latar belakang saat hover */
+                                color: #000;
+                                /* Warna teks saat hover */
+                            }
+
+                            /* Scrollbar */
+                            .custom-dropdown-menu::-webkit-scrollbar {
+                                width: 8px;
+                                /* Lebar scrollbar */
+                            }
+
+                            .custom-dropdown-menu::-webkit-scrollbar-thumb {
+                                background: #ccc;
+                                /* Warna scrollbar */
+                                border-radius: 4px;
+                                /* Sudut membulat */
+                            }
+
+                            .custom-dropdown-menu::-webkit-scrollbar-thumb:hover {
+                                background: #999;
+                                /* Warna scrollbar saat hover */
+                            }
+                        </style>
+
+                        <!-- Nav item -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('contact.index') }}">Contact us</a>
+                        </li>
+
+                         <!-- Nav item -->
+                         <li class="nav-item dropdown" id="documentDropdown">
+                            <a class="nav-link">Document</a>
+                            <ul class="dropdown-menu custom-dropdown-menu">
+                                <li><a class="dropdown-item" href="{{ route('user-manual.index') }}">User Manual Sistem
+                                        Informasi (Lain-Lain)</a></li>
+                                {{-- <li><a class="dropdown-item" href="{{ route('document.upload') }}">Upload Dokumen</a></li> --}}
+                            </ul>
+                        </li>
+
+                        <!-- JavaScript -->
+                        <script>
+                            document.addEventListener('DOMContentLoaded', function() {
+                                // Dropdown Tentang Kami
+                                const aboutDropdown = document.getElementById('aboutDropdown');
+                                const aboutMenu = aboutDropdown.querySelector('.dropdown-menu');
+
+                                aboutDropdown.addEventListener('mouseenter', function() {
+                                    aboutMenu.classList.add('show');
+                                });
+
+                                aboutDropdown.addEventListener('mouseleave', function() {
+                                    aboutMenu.classList.remove('show');
+                                });
+
+                                // Dropdown Document
+                                const documentDropdown = document.getElementById('documentDropdown');
+                                const documentMenu = documentDropdown.querySelector('.dropdown-menu');
+
+                                documentDropdown.addEventListener('mouseenter', function() {
+                                    documentMenu.classList.add('show');
+                                });
+
+                                documentDropdown.addEventListener('mouseleave', function() {
+                                    documentMenu.classList.remove('show');
+                                });
+                            });
+                        </script>
+
+                        <!-- CSS -->
+                        <style>
+                            .custom-dropdown-menu {
+                                background-color: #f9f9f9;
+                                border: 1px solid #ddd;
+                                max-height: 200px;
+                                overflow-y: auto;
+                                padding: 10px;
+                                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                            }
+
+                            .custom-dropdown-menu .dropdown-item {
+                                font-family: Arial, sans-serif;
+                                font-size: 14px;
+                                color: #333;
+                                padding: 8px 12px;
+                                border-bottom: 1px solid #eee;
+                            }
+
+                            .custom-dropdown-menu .dropdown-item:hover {
+                                background-color: #e9ecef;
+                                color: #000;
+                            }
+
+                            .custom-dropdown-menu::-webkit-scrollbar {
+                                width: 8px;
+                            }
+
+                            .custom-dropdown-menu::-webkit-scrollbar-thumb {
+                                background: #ccc;
+                                border-radius: 4px;
+                            }
+
+                            .custom-dropdown-menu::-webkit-scrollbar-thumb:hover {
+                                background: #999;
+                            }
+                        </style>
+                    </ul>
+                </div>
+                <!-- Main navbar END -->
+
+                <!-- CSS -->
+                <style>
+                    /* Default state: hitam */
+                    .nav-link,
+                    .dropdown-item {
+                        color: #000;
+                        /* Hitam */
+                        text-decoration: none;
+                        /* Hilangkan underline */
+                        transition: color 0.3s ease;
+                        /* Animasi perubahan warna */
+                    }
+
+                    /* Hover atau saat aktif: emas */
+                    .nav-link:hover,
+                    .nav-link:focus,
+                    .dropdown-item:hover,
+                    .dropdown-item:focus {
+                        color: #cfac32;
+                        /* Emas */
+                    }
+                </style>
+
+                <!-- Buttons -->
+                <ul class="nav align-items-center dropdown-hover ms-sm-2">
+                    <!-- Dark mode option START -->
+                    <li class="nav-item dropdown dropdown-animation">
+                        <button class="btn btn-link mb-0 px-2 lh-1" id="bd-theme" type="button" aria-expanded="false"
+                            data-bs-toggle="dropdown" data-bs-display="static">
+                            <use href="#"></use>
+                            </svg>
+                        </button>
+
+                        <ul class="dropdown-menu min-w-auto dropdown-menu-end" aria-labelledby="bd-theme">
+                            <li class="mb-1">
+
+                                <!-- Dark mode option END -->
+
+                                <!-- Sign up button -->
+                            <li class="nav-item me-2">
+
+                            </li>
+                            <!-- Buy now button -->
+
+                    </li>
+                    <!-- Responsive navbar toggler -->
+                    <li class="nav-item">
+                        <button class="navbar-toggler ms-sm-3 p-2" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
+                            aria-label="Toggle navigation">
+                            <span class="navbar-toggler-animation">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </span>
+                        </button>
+                    </li>
+                </ul>
+
+            </div>
+        </nav>
+        <!-- Logo Nav END -->
+    </header>
+    <!-- Header END -->
+
+    <!-- **************** MAIN CONTENT START **************** -->
+    <main>
+
+        <!-- =======================
+Main hero START -->
+        <section class="pt-xl-8">
+            <div class="container">
+                <div class="row g-4 g-xxl-5">
+                    <div class="col-xl-9 mx-auto">
+                        <!-- Image -->
+                        <img src="{{ asset('images/gedung-rektorat.jpeg') }}" class="rounded" alt="contact-bg">
+
+                        <!-- Contact form START -->
+                        <div class="row mt-n5 mt-sm-n7 mt-md-n8">
+                            <div class="col-11 col-lg-9 mx-auto">
+                                <div class="card shadow p-4 p-sm-5 p-md-6">
+                                    <!-- Card header -->
+                                    <div class="card-header border-bottom px-0 pt-0 pb-5">
+                                        <!-- Breadcrumb -->
+                                        <nav class="mb-3" aria-label="breadcrumb">
+                                            <ol class="breadcrumb breadcrumb-dots pt-0">
+                                                <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a>
+                                                </li>
+                                                <li class="breadcrumb-item active" aria-current="page">Contact us</li>
+                                            </ol>
+                                        </nav>
+                                        <!-- Title -->
+                                        <h1 class="mb-3 h3">Contact</h1>
+                                        <p class="mb-0">Masukan Aduan Anda <a href="mailto:ppti@unesa.ac.id"
+                                                style="color: #cfac32;">ppti@unesa.ac.id</a>
+                                    </div>
+                                    <!-- Tampilkan pesan sukses jika ada -->
+                                    @if (session('success'))
+                                        <div class="alert alert-success">
+                                            {{ session('success') }}
+                                        </div>
+                                    @endif
+
+                                    <!-- Form untuk mengirim data -->
+                                    <form action="{{ route('contact.store') }}" method="POST">
+                                        @csrf
+                                        <!-- Nama -->
+                                        <div class="form-floating mb-4">
+                                            <input type="text" class="form-control" id="floatingName"
+                                                name="name" placeholder="Nama Anda">
+                                            <label for="floatingName">Nama Anda</label>
+                                        </div>
+                                        <!-- Email -->
+                                        <div class="form-floating mb-4">
+                                            <input type="email" class="form-control" id="floatingEmail"
+                                                name="email" placeholder="Email Anda">
+                                            <label for="floatingEmail">Email Anda</label>
+                                        </div>
+                                        <!-- Nomor Telepon -->
+                                        <div class="form-floating mb-4">
+                                            <input type="tel" class="form-control" id="floatingPhone"
+                                                name="phone" placeholder="Nomor Telepon" maxlength="13" required>
+                                            <label for="floatingPhone">Nomor Telepon</label>
+                                        </div>
+                                        <!-- Pesan -->
+                                        <div class="form-floating mb-4">
+                                            <textarea class="form-control" id="floatingMessage" name="message" placeholder="Masukkan Pesan"
+                                                style="height: 100px"></textarea>
+                                            <label for="floatingMessage">Masukkan Pesan Anda</label>
+                                        </div>
+                                        <!-- Tombol Kirim -->
+                                        <button type="submit" class="btn btn-lg btn-primary mb-0"
+                                            style="background-color: #cfac32; border-color: #cfac32;">
+                                            Kirim Pesan
+                                        </button>
+                                    </form>
+
+
+        </section>
+        <!-- =======================
+Main hero END -->
+
+        <!-- =======================
+Contact info & Map START -->
+
+
+        <!-- Map -->
+
+        </Section>
+        <!-- =======================
+Contact info & Map END -->
+
+    </main>
+    <!-- **************** MAIN CONTENT END **************** -->
+
+    <!-- =======================
+Footer START -->
+    <footer class="bg-dark position-relative overflow-hidden pt-6" data-bs-theme="dark">
+
+        <!-- SVG decoration -->
+        <figure class="position-absolute top-0 start-0 mt-n8 ms-n9">
+            <svg class="fill-mode" width="775px" height="834px" viewBox="0 0 775 834"
+                style="enable-background:new 0 0 775 834; opacity: 0.05;" xml:space="preserve">
+                <path
+                    d="M486.1,564.4c-3.6,2.5-7.4,4.8-11.3,6.4c-12,5.5-25.7,7.9-42.2,7.4c-30.6-1.1-65.6-12.5-102.8-24.4 c-50.7-16.2-103.3-33.4-152.5-27c-56.1,7.2-97.9,44.4-128,114l-0.4-0.2c67.5-156.1,181-119.5,281.1-87.1c37,12,72,23.2,102.5,24.3 c34.3,1.2,58.1-10.7,74.9-37.4C530.1,505,547.1,466,565,425.1C619.4,301,675.6,172.7,892.1,141.3l0.1,0.4 c-216.2,31.4-272.5,159.5-326.8,283.5c-18.1,41.1-35,79.7-57.7,115.6C501.6,550.7,494.5,558.5,486.1,564.4z">
+                </path>
+                <path
+                    d="M500.9,551.4c-43.7,31-103,15.8-165.5-0.2c-49.9-12.7-101.5-25.8-148.7-16.7c-53.3,10.5-93.2,49-121.6,118 l-0.5-0.1c15.3-37.1,33.3-64.7,55.1-84.7c19.5-17.7,41.3-28.6,66.7-33.7c47.4-9.2,99,3.9,148.9,16.6 c70.4,17.9,137.1,34.9,181.3-14.4c35.7-39.9,57.3-91.7,80.2-146.7c23.8-56.7,48.2-115.5,90.2-163.6c22.7-25.9,48.4-46.4,78.4-62.4 c33.9-18.1,72.2-30.3,117.1-37.1l0.1,0.4C695,155.3,645.2,274.5,597.1,389.7c-22.9,55-44.5,106.8-80.4,146.8 C512.3,542.4,506.6,547.3,500.9,551.4z">
+                </path>
+                <path
+                    d="M521.3,536.4c-21.9,15.5-48.4,23.4-80.8,23.8c-31.2,0.5-65.1-5.8-97.9-11.9c-49.3-9.2-100.2-18.7-145.7-6.5 c-51.1,13.7-88.9,53.7-116,122.6l-0.6-0.2c60.5-154.1,163.3-135,262.6-116.5c68.1,12.7,132.6,24.6,183.6-15.8 c48.1-38.2,71.1-100.6,95.6-166.5c20.3-55,41.4-111.6,78.3-158.1c20-25.1,42.7-44.9,69.2-60.5c30.1-17.5,64.2-29.1,104.3-35.4 l0.2,0.6c-167.2,26.3-210,141.9-251.4,253.5C598.3,431.5,575,493.8,527,532.2C525.1,533.8,523.2,535.1,521.3,536.4z">
+                </path>
+                <path
+                    d="M548.9,520.3c-4,2.9-8.2,5.6-12.6,8c-56.6,31.5-120.9,23.8-183,16.6c-51.7-6-100.4-11.8-144.6,3.2 c-49.9,16.9-85.5,57.7-111.3,128.2l-0.6-0.2c13.7-37.3,30.1-66,49.9-87.8c17.8-19.4,37.9-32.8,61.8-40.9 c44.3-15,93.1-9.3,144.9-3.2c62.1,7.2,126.3,14.8,182.8-16.6c59.6-33.2,82-104.7,105.9-180.4c17.1-54.3,34.7-110.5,67.2-156.6 c36.7-52,87.8-82.8,155.7-94l0.2,0.6c-151.9,25-187.8,139.3-222.3,250C620.4,417.6,599.4,484.5,548.9,520.3z">
+                </path>
+                <path
+                    d="M573.5,509.5c-8.2,5.8-17.4,10.7-27.7,14.6c-59.3,22-119.1,18.8-176.8,15.8c-53.2-2.8-103.3-5.3-147.1,12.5 C172.6,572.3,138.1,615.5,113,688l-0.5-0.1c25.1-72.7,59.6-115.9,108.9-136c44-18,94.2-15.3,147.6-12.6 c57.7,3,117.4,6.1,176.6-15.9c70.7-26.2,91.1-106.3,112.8-191.4c13.9-54.5,28.3-111,56.7-156.9C747,123.2,793,92.6,855.6,82l0,0.7 C716.3,106.5,687,221.4,658.9,332.2C640.4,405,622.6,474.4,573.5,509.5z">
+                </path>
+                <path
+                    d="M595.2,502.3c-11.3,8-24.6,14-40,17.4c-56.8,12.7-112,12.7-160.5,12.9c-60.2,0.1-112,0.2-157,21.1 c-49.5,23-84,69.3-108.5,146l-0.6-0.2c24.3-76.7,58.9-123.1,108.6-146.3c45.1-21.1,97.2-21.1,157.4-21.2 c48.6,0,103.6-0.1,160.5-12.9c81.6-18.3,99-106.7,117.4-200.6c10.7-55,22-112,46.6-158.2C747,108,788.6,77.5,846.5,67.2l0.1,0.8 C718,91.2,695.2,206.9,673.2,318.9C658.3,394.9,643.8,467.8,595.2,502.3z">
+                </path>
+                <path
+                    d="M615.3,497.4c-13.7,9.7-30.2,16-50.8,18c-44.4,4.6-86.5,5.8-123.6,6.8c-71.2,2-132.8,3.7-182,27.7 C206,575.6,169.8,627,145,711.3l-0.8-0.1c13-44.6,29-79.3,48.6-106.3c18.1-24.9,39.5-43.1,65.6-55.7 c49.5-24.1,110.9-25.8,182.4-27.7c37.1-1,79.3-2.2,123.5-6.7c92.6-9.4,106.2-106.5,120.5-209.2c7.8-55.9,15.9-113.6,37-160 c23.8-52.7,61.6-83.1,115.3-93.4l0.3,0.7c-53.4,10.1-91,40.4-114.6,92.9c-21.1,46.4-29.2,104.1-36.8,159.9 C674.6,386,663.8,463,615.3,497.4z">
+                </path>
+                <path
+                    d="M634.4,494c-15.5,11-35.2,17.2-60.4,17.3c-12.3,0.1-24.5,0.1-36.1,0.1c-103.7,0-185.5-0.1-246.4,26.4 c-63.5,27.7-103.7,85-130.5,185.5l-0.8-0.1c13.9-52.5,31.3-92.6,53.2-122.9c20.7-28.8,46.2-49.4,77.8-63.2 c61-26.6,142.9-26.4,246.6-26.4c11.7,0.1,23.8,0,36.1-0.1c103.8-0.2,112.9-105.6,122.5-217.2c4.7-56.9,9.9-115.5,27.5-162.4 c20-53.1,54.1-83.7,104.1-93.7l0.1,0.8c-49.5,9.8-83.5,40.3-103.3,93.1c-17.6,46.9-22.7,105.4-27.6,162 C690.1,378.2,682.9,459.6,634.4,494z">
+                </path>
+                <path
+                    d="M652.7,491.8c-17.9,12.7-40.7,17.7-69.2,15.4C328,486.2,228.3,517.5,177.2,735.2l-0.9-0.3 c25.9-110.7,64-171.6,127-204c66.6-34.2,160.2-34.6,280.3-24.7c32.2,2.6,56.9-4.1,75.4-20.5c42.1-37.4,45.1-118.6,48-204.7 c4-116.5,8.1-236.8,112.1-258.6l0.1,0.8C715.9,44.8,711.8,164.8,707.8,280.9c-3.1,86.3-5.8,167.7-48.3,205.2 C657.3,488.3,655,490.1,652.7,491.8z">
+                </path>
+                <path
+                    d="M670.6,490.3c-19.3,13.7-44.8,17.9-77.7,12.7c-138.5-21.4-227.1-13-287.3,27 c-55.4,36.8-89.1,101.7-112.4,216.9l-0.9-0.3C215.8,631,249.6,566,305.1,528.9c60.3-40.1,149.1-48.6,288.1-27.3 c35.9,5.5,63,0,82.6-16.9c43.2-37.5,42.2-124.3,40.9-216.1C714.9,151,713,28.8,809.9,7.7l0.1,0.8c-96,21.1-94.3,142.7-92.7,260.6 c1.3,92.1,2.4,179-41.1,216.7C674.3,487.4,672.6,488.9,670.6,490.3z">
+                </path>
+            </svg>
+        </figure>
+
+        <!-- SVG decoration -->
+        <div class="position-absolute top-0 end-0 mt-n3 me-n4">
+            <img src="assets/images/elements/decoration-pattern-2.svg" style="opacity:0.05;" alt="">
+        </div>
+
+        <div class="container position-relative mt-5">
+            <div class="col-lg-3">
+                <!-- logo -->
+                <a class="navbar-brand me-0" href="#">
+                    <img class="navbar-brand-item" style="height: 90px;"
+                        src="{{ asset('images/logo/Logo-Unesa.png') }}" alt="logo">
+                </a>
+            </div>
+            <div class="container mt-4">
+                <div class="row">
+                    <!-- Follow on Section -->
+                    <div class="col-lg-4">
+                        <h5 class="mb-2 mb-md-4">Kontak Kami</h5>
+                        <p>Email: <a style="color: #cfac32;" href="mailto:info@unesa.ac.id">info@unesa.ac.id</a></p>
+                        <p>Telepon: <a style="color: #cfac32;" href="tel:+623199876543">+62 31 9987 6543</a></p>
+
+                        <!-- Follow on Section -->
+                        <h5 class="mb-2 mb-md-4 mt-6">Ikuti Kami</h5>
+                        <ul class="list-inline mb-0 mt-3">
+                            <li class="list-inline-item">
+                                <a class="btn btn-m btn-icon btn-light"
+                                    href="https://web.facebook.com/universitasnegerisurabaya/?_rdc=1&_rdr"><i
+                                        class="fab fa-fw fa-facebook-f lh-base"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a class="btn btn-m btn-icon btn-light"
+                                    href="https://www.instagram.com/official_ppti_unesa/"><i
+                                        class="fab fa-fw fa-instagram lh-base"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a class="btn btn-m btn-icon btn-light" href="https://twitter.com/Official_UNESA"><i
+                                        class="fab fa-fw fa-twitter lh-base"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a class="btn btn-m btn-icon btn-light"
+                                    href="https://www.youtube.com/@pptiunesa8488"><i
+                                        class="fab fa-fw fa-youtube lh-base"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <head>
+                        <!-- Link Font Awesome -->
+                        <link rel="stylesheet"
+                            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+                    </head>
+
+
+                    <!-- Main Content Section -->
+                    <div class="col-lg-8">
+                        <div class="row g-4">
+                            <!-- Lokasi Kantor Section -->
+                            <div class="col-md-6">
+                                <h5 class="mb-2 mb-md-4">Lokasi Kantor</h5>
+                                <h6 style="color: #cfac32;">Kampus Lidah</h6>
+                                <p>Gedung Rektorat Unesa Kampus Lidah Wetan Lt. 3 Sayap (PPTI/PUSKOM) Jl. Lidah Wetan,
+                                    Surabaya (60213)</p>
+                                <div class="col-md-6 ">
+                                    <h6 style="color: #cfac32;">Kampus Ketintang</h6>
+                                    <p>Gedung E2 Lt. 2 Jl. Ketintang, Surabaya (60231)</p>
+                                </div>
+                            </div>
+
+                            <!-- Peta Section -->
+                            <div class="col-md-6">
+                                <h5 class="mb-2 mb-md-4">Peta</h5>
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d4477.922826967872!2d112.67296544048394!3d-7.300544739540734!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7fc4dfbef3eff%3A0xff531c44a03708c1!2sInformation%20Technology%20Development%20Center%20-%20State%20University%20of%20Surabaya!5e1!3m2!1sid!2sid!4v1725545117528!5m2!1sid!2sid"
+                                    width="100%" height="350" style="border:0;" allowfullscreen=""
+                                    loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Divider -->
+            <hr class="mt-4 mb-0">
+
+            <!-- Bottom footer -->
+            <div class="d-md-flex justify-content-between align-items-center text-center text-lg-start py-4">
+                <!-- copyright text -->
+                <div class="text-body"> Copyright © 2025 PPTI | Pusat Pengembangan Teknologi Informasi Universitas
+                    Negeri Surabaya. <br> Supported By PPTI Universitas Negeri Surabaya. </div>
+                <!-- copyright links-->                               
+                  <!-- Language selector -->
+                <div class="dropdown dropup text-center text-md-end mt-3 mt-md-0">
+                    <a class="btn btn-sm btn-light mb-0 d-flex flex-column justify-content-center align-items-center"
+                        href="#" role="button" id="languageSwitcher" data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                        style="background-color: #cfac32; border-radius: 8px; width: 50px; height: 50px;">
+                        <i class="fas fa-chevron-up" style="font-size: 20px; color: #fff;"></i>
+                        <i class="fas fa-chevron-up" style="font-size: 20px; color: #fff; margin-top: -5px;"></i>
+                    </a>
+                </div>
+                  {{-- fitur aksesibilitas --}}
+                  <script src="https://cdn.userway.org/widget.js" data-akun="UaGXlEqp8q" defer></script>
+
+
+
+                <!-- =======================
+Footer END -->
+
+                <!-- Back to top -->
+                <div class="back-top"></div>
+
+                <!-- Bootstrap JS -->
+                <script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+                <!--Vendors-->
+                <script src="assets/vendor/purecounterjs/dist/purecounter_vanilla.js"></script>
+                <script src="assets/vendor/glightbox/js/glightbox.js"></script>
+                <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+                <!-- Theme Functions -->
+                <script src="assets/js/functions.js"></script>
+
+</body>
+
+<!-- Mirrored from mizzle.webestica.com/about-v1.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 04 Sep 2024 02:52:33 GMT -->
+
+</html>
